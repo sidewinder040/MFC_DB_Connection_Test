@@ -9,5 +9,7 @@
 
 // add headers that you want to pre-compile here
 #include "framework.h"
+#include "odbcinst.h"
+#include "afxdb.h"
 
 #endif //PCH_H
