@@ -34,4 +34,5 @@ public:
 	CListCtrl m_ListControl;
 	CButton m_buttonRead;
 	afx_msg void OnBnClickedButton1();
+	void ResetListControl();
 };

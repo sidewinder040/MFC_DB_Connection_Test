@@ -96,7 +96,7 @@ void CMFCDBDlg::OnBnClickedButton1()
 	CDatabase database;
 	CString SqlString;
 	CString strID, strName, strAge;
-	CString sDriver = L"ODBC Driver for SQL Server";
+	CString sDriver = L"ODBC Driver 18 for SQL Server";
 	//CString sFile = L"D:\\Test.mdb";
 	CString sDsn = L"myUserDSN";
 	CString sDatabase = L"Test";
@@ -104,7 +104,9 @@ void CMFCDBDlg::OnBnClickedButton1()
 	int iRec = 0;
 
 	// Build ODBC connection string
-	sDsn.Format(L"ODBC;DRIVER={%s};DSN='%s';DBQ=%s", sDriver, sDsn);
+	//sDsn.Format(L"ODBC;DRIVER={%s};DSN='%s';database=%s", sDriver, sDsn, sDatabase);
+	sDsn = L"DSN=myUserDSN; Trusted_Connection=Yes;";
+
 	TRY{
 		// Open the database
 		database.Open(NULL,false,false,sDsn);
@@ -123,9 +125,9 @@ void CMFCDBDlg::OnBnClickedButton1()
 	ListView_SetExtendedListViewStyle(m_ListControl, LVS_EX_GRIDLINES);
 
 	// Column width and heading
-	m_ListControl.InsertColumn(0, "Emp ID", LVCFMT_LEFT, -1, 0);
-	m_ListControl.InsertColumn(1, "Name", LVCFMT_LEFT, -1, 1);
-	m_ListControl.InsertColumn(2, "Age", LVCFMT_LEFT, -1, 1);
+	m_ListControl.InsertColumn(0, L"Emp ID", LVCFMT_LEFT, -1, 0);
+	m_ListControl.InsertColumn(1, L"Name", LVCFMT_LEFT, -1, 1);
+	m_ListControl.InsertColumn(2, L"Age", LVCFMT_LEFT, -1, 1);
 	m_ListControl.SetColumnWidth(0, 120);
 	m_ListControl.SetColumnWidth(1, 200);
 	m_ListControl.SetColumnWidth(2, 200);
@@ -133,9 +135,9 @@ void CMFCDBDlg::OnBnClickedButton1()
 	// Loop through each record
 	while (!recset.IsEOF()) {
 		// Copy each column into a variable
-		recset.GetFieldValue("ID", strID);
-		recset.GetFieldValue("Name", strName);
-		recset.GetFieldValue("Age", strAge);
+		recset.GetFieldValue(L"ID", strID);
+		recset.GetFieldValue(L"Name", strName);
+		recset.GetFieldValue(L"Age", strAge);
 
 		// Insert values into the list control
 		iRec = m_ListControl.InsertItem(0, strID, 0);
@@ -149,22 +151,21 @@ void CMFCDBDlg::OnBnClickedButton1()
 	database.Close();
 }CATCH(CDBException, e) {
 	// If a database exception occured, show error msg
-	AfxMessageBox("Database error: " + e→m_strError);
+	AfxMessageBox(L"Database error: " + e->m_strError);
 }
 END_CATCH;
 }
 
 // Reset List control
-void CMFCDatabaseDemoDlg::ResetListControl() {
+void CMFCDBDlg::ResetListControl() {
 	m_ListControl.DeleteAllItems();
 	int iNbrOfColumns;
 	CHeaderCtrl* pHeader = (CHeaderCtrl*)m_ListControl.GetDlgItem(0);
 	if (pHeader) {
-		iNbrOfColumns = pHeader→GetItemCount();
+		iNbrOfColumns = pHeader->GetItemCount();
 	}
 	for (int i = iNbrOfColumns; i >= 0; i--) {
 		m_ListControl.DeleteColumn(i);
 	}
 }
 	
-}
