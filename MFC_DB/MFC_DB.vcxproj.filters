@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Sql Scripts">
+      <UniqueIdentifier>{c130ad80-ed2d-4f29-a7b1-ffd3e9abab24}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MFC_DB.h">
@@ -53,6 +56,13 @@
   <ItemGroup>
     <None Include="res\MFCDB.rc2">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="README.md" />
+    <None Include="SQL Scripts\SQLQueryEmployeesTable.sql">
+      <Filter>Sql Scripts</Filter>
+    </None>
+    <None Include="SQL Scripts\dbo.Employees.data.sql">
+      <Filter>Sql Scripts</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

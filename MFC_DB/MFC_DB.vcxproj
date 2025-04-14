@@ -204,7 +204,10 @@
     <ResourceCompile Include="MFCDB.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="res\MFCDB.rc2" />
+    <None Include="SQL Scripts\dbo.Employees.data.sql" />
+    <None Include="SQL Scripts\SQLQueryEmployeesTable.sql" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\MFC_DB.ico" />

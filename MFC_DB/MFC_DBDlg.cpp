@@ -96,7 +96,7 @@ void CMFCDBDlg::OnBnClickedButton1()
 	CDatabase database;
 	CString SqlString;
 	CString strID, strName, strAge;
-	CString sDriver = L"ODBC Driver 18 for SQL Server";
+	/*CString sDriver = L"ODBC Driver 18 for SQL Server";*/
 	//CString sFile = L"D:\\Test.mdb";
 	CString sDsn = L"myUserDSN";
 	CString sDatabase = L"Test";
